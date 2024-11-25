@@ -30,7 +30,7 @@ const page = async ({ params }) => {
 
   return (
     <>
-      <div className="bg-gray-800 fixed w-full top-0 z-30">
+      <div className="bg-[#2D2D2D] fixed w-full top-0 z-30">
         <Navbar menuItems={menuItems} settings={settings} />
       </div>
       <section className="bg-topHeaderColor">

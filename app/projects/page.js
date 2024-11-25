@@ -108,13 +108,15 @@ const page = () => {
 
   return (
     <>
-      <div className="bg-gray-800 fixed w-full top-0 z-30">
+      <div className="bg-[#2D2D2D] fixed w-full top-0 z-30">
         <Navbar menuItems={menuItems} settings={settings} />
       </div>
 
       <section className="md:pt-40 pt-28 pb-10">
-        <div className="container mx-auto">
-          <h1 className="text-5xl text-gray-600 mb-8 font-medium ">Projects</h1>
+        <div className="max-w-screen-lg mx-auto">
+          <h1 className="text-5xl text-gray-600 mb-8 font-medium border-gray-600 border-b  inline-block pb-2 md:pb-4 ">
+            Projects
+          </h1>
 
           <div className="grid grid-cols-2 md:grid-cols-3 md:gap-12 gap-5">
             {content}

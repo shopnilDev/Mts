@@ -29,16 +29,14 @@ const Partners = () => {
   ];
 
   return (
-    <section className="bg-white pt-14">
+    <section className="bg-white py-14 ">
       <div className="container mx-auto">
         <h2 className="text-5xl text-gray-600 mb-8 font-medium">Partners</h2>
-        <div className="grid grid-cols-5 divide-x divide-y divide-black">
+        <div className="grid grid-cols-5 border border-gray-400">
           {logos.map((logo, index) => (
             <div
               key={index}
-              className={`p-14 flex justify-center items-center ${
-                index >= 5 ? "border-t border-gray-200" : ""
-              }`}
+              className="p-14 flex justify-center items-center border border-gray-400"
             >
               <Image
                 src={logo}

@@ -28,7 +28,7 @@ const Projects = async () => {
   return (
     <>
       <section className="bg-sectionBgColor py-14">
-        <div className="container mx-auto">
+        <div className="max-w-screen-lg mx-auto">
           <h1 className="text-5xl text-gray-300 mb-8 font-medium">Projects</h1>
 
           {projects.length > 0 ? (

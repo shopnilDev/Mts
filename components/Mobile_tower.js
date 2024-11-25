@@ -4,7 +4,7 @@ const Mobile_tower = () => {
   return (
     <>
       <section className="py-10 bg-[#2D2D2D]">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-center gap-6">
+        <div className="flex flex-col md:flex-row gap-6 ">
           <video
             className="md:w-1/2 md:h-full"
             autoPlay
@@ -13,7 +13,7 @@ const Mobile_tower = () => {
             src="https://video.wixstatic.com/video/f21e62_667335274d434d008dbd66c9a56fe3e3/1080p/mp4/file.mp4"
           ></video>
 
-          <div className="container mx-auto md:w-1/2 flex flex-col text-white">
+          <div className="container mx-auto md:w-1/2 flex flex-col text-white my-auto">
             <h1 className="text-3xl md:text-4xl mb-4 font-semibold">
               Mobile Tower Deployment
             </h1>

@@ -37,12 +37,13 @@ const Navbar = ({ menuItems, settings }) => {
   };
 
   // Use helper methods to get the logo
-  const logo = getMetaValueByMetaName(settings, "site_logoimg_id");
+  // const logo = getMetaValueByMetaName(settings, "site_logoimg_id");
+  // console.log(settings);
 
   return (
     <div
       className={`${
-        isSticky ? "sticky top-0 bg-gray-800" : ""
+        isSticky ? "sticky top-0 bg-[#2D2D2D]" : ""
       } z-50 duration-200 ease-in-out`}
     >
       <nav className="container mx-auto flex items-center justify-between py-2 w-full z-10 relative">
@@ -51,9 +52,9 @@ const Navbar = ({ menuItems, settings }) => {
           <Image
             src={inteltecLogo}
             alt="logo"
-            width={110}
-            height={110}
-            className="md:w-48"
+            width={300}
+            height={300}
+            className="md:w-64"
           />
         </Link>
 

@@ -33,7 +33,7 @@ const page = async ({ params }) => {
 
   return (
     <>
-      <div className="bg-gray-800 fixed w-full top-0 z-30">
+      <div className="bg-[#2D2D2D] fixed w-full top-0 z-30">
         <Navbar menuItems={menuItems} settings={settings} />
       </div>
 
@@ -74,12 +74,10 @@ const page = async ({ params }) => {
                 </Link>
               </div>
             </div>
-            <div className="basis-1/2 flex items-center justify-center h-screen">
+            <div className="basis-1/2 flex items-center justify-center h-screen relative">
               <Image
-                className="w-full h-screen object-cover rounded-sm"
-                width={400}
-                height={400}
-                layout="responsive"
+                className="object-cover rounded-sm"
+                fill
                 src={project?.featured_image}
                 alt="projects"
               />

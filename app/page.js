@@ -4,9 +4,8 @@ import Mobile_tower from "@/components/Mobile_tower";
 import Partners from "@/components/Partners";
 import Projects from "@/components/Projects";
 import Services from "@/components/Services";
-
 import Navbar from "@/components/Navbar";
-import Banner from "@/components/Banner";
+
 import { getNavData } from "@/helpers/getNavbarData";
 
 export default async function Home() {
