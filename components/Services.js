@@ -5,12 +5,13 @@ import Link from "next/link";
 
 // ==== icons ====
 import logo1 from "../public/image/icons/cellular-tower.png";
-import logo2 from "../public/image/icons/Satellite.png";
-import logo3 from "../public/image/icons/ip.png";
-import logo4 from "../public/image/icons/data center.png";
-import logo5 from "../public/image/icons/wireless.png";
-import logo6 from "../public/image/icons/e.png";
+// import logo2 from "../public/image/icons/Satellite.png";
+// import logo3 from "../public/image/icons/ip.png";
+// import logo4 from "../public/image/icons/data center.png";
+// import logo5 from "../public/image/icons/wireless.png";
+// import logo6 from "../public/image/icons/e.png";
 import { fetchClient } from "@/helpers/fetchClient";
+import { getMetaValueByMetaName } from "@/helpers/metaHelpers";
 
 const Services = async () => {
   let services;
@@ -36,6 +37,11 @@ const Services = async () => {
     //   </div>
     // );
   }
+  const shortDes = getMetaValueByMetaName(
+    services,
+    "service_short_description"
+  );
+  console.log(shortDes);
 
   return (
     <>
