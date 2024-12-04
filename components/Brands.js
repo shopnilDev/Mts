@@ -46,7 +46,7 @@ const Brands = async () => {
           <Image src={logo7} width={80} height={50} className="md:w-20" />
         </div>
       </div> */}
-      <section className="mt-48  bg-white">
+      <section className="mt-42  bg-white">
         <div className=" flex   ">
           {/* Left side */}
           <div className="w-[37%] flex justify-end bg-[#DBDBDB] items-center pr-8 ">

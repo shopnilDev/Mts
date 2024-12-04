@@ -21,7 +21,7 @@ const Banner = () => {
     fetchSettings();
   }, []);
 
-  const mainSpeach = getMetaValueByMetaName(settings, "main_speech");
+  // const mainSpeach = getMetaValueByMetaName(settings, "main_speech");
   // console.log(mainSpeach);
   return (
     <>

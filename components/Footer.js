@@ -19,7 +19,7 @@ const Footer = () => {
         {/* Top */}
         <div className="max-w-screen-lg mx-auto py-10">
           <div className="flex flex-col md:flex-row md:justify-between items-start gap-6">
-            <Image src={footerLogo} width={200} height={170} />
+            <Image src={footerLogo} width={200} height={170} alt="footerlogo" />
 
             <div className="flex flex-col text-gray-500 leading-8">
               <span>
@@ -34,7 +34,7 @@ const Footer = () => {
               <span>Fax: +971 2 5545133</span>
               <span>E-mail: info@inteltec.ae</span>
               <Link href={"#"} className="mt-5">
-                <Image src={linkedin} />
+                <Image src={linkedin} alt="linkdin" />
               </Link>
             </div>
           </div>
@@ -56,12 +56,12 @@ const Footer = () => {
         <div className="bg-[#242323]">
           <div className="max-w-screen-lg  mx-auto flex items-center justify-between flex-wrap py-3 ">
             <h1 className="text-white text-sm"> Inteltec Emirates Group</h1>
-            <Image src={inteltec} width={100} height={100} />
-            <Image src={ipay} width={50} height={50} />
-            <Image src={vodatel} width={100} height={100} />
-            <Image src={iparama} width={60} height={60} />
-            <Image src={gul} width={100} height={100} />
-            <Image src={ftc} width={60} height={60} />
+            <Image src={inteltec} width={100} height={100} alt="inteltec" />
+            <Image src={ipay} width={50} height={50} alt="ipay" />
+            <Image src={vodatel} width={100} height={100} alt="vodatel" />
+            <Image src={iparama} width={60} height={60} alt="iparama" />
+            <Image src={gul} width={100} height={100} alt="gul" />
+            <Image src={ftc} width={60} height={60} alt="ftc" />
           </div>
         </div>
       </footer>

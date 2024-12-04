@@ -34,20 +34,27 @@ const Projects = async () => {
           {projects.length > 0 ? (
             <div className="grid grid-cols-2 md:grid-cols-3 md:gap-12 gap-5">
               {projects.map((project, projectIndex) => (
-                <Link href={"#"} key={projectIndex}>
-                  <div>
-                    <Image
-                      src={project.featured_image}
-                      width={100}
-                      height={100}
-                      layout="responsive"
-                      alt={project.name}
-                      className="rounded-md object-cover w-full overflow-hidden hover:opacity-65 duration-100 ease-in-out"
-                    />
-                    <h1 className="bg-gray-500 w-full text-center text-white py-1">
-                      {project.name}
-                    </h1>
-                  </div>
+                <Link href={`/projects/${project?.slug}`} key={projectIndex}>
+                  <article className="relative overflow-hidden rounded-md shadow-lg bg-white hover:shadow-xl duration-200 ease-in-out">
+                    {/* Image Section */}
+                    <figure className="w-full h-40 md:h-56 relative">
+                      <Image
+                        src={project.featured_image || "/image/placeholder.png"}
+                        alt={`Image of project: ${project.name}`}
+                        fill
+                        className="rounded-t-md object-cover transition-opacity duration-200 ease-in-out hover:opacity-80"
+                        // priority={projectIndex === 0}
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                      />
+                    </figure>
+
+                    {/* Project Name */}
+                    <div className="p-4">
+                      <h2 className="text-lg font-semibold text-gray-800 text-center truncate">
+                        {project.name}
+                      </h2>
+                    </div>
+                  </article>
                 </Link>
               ))}
             </div>

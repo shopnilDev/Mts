@@ -1,6 +1,10 @@
 import Navbar from "@/components/Navbar";
 import { fetchClient } from "@/helpers/fetchClient";
 import { getNavData } from "@/helpers/getNavbarData";
+import {
+  getExtraFieldValue,
+  getMetaValueByMetaName,
+} from "@/helpers/metaHelpers";
 
 const page = async ({ params }) => {
   const { menuItems, settings } = await getNavData();
@@ -27,6 +31,9 @@ const page = async ({ params }) => {
       </div>
     );
   }
+
+  // const extraFields = service?.extra_fields || [];
+  // const value = getExtraFieldValue(extraFields, "service_short_description");
 
   return (
     <>

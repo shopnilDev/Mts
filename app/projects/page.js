@@ -85,11 +85,10 @@ const page = () => {
                 <Image
                   src={project.featured_image}
                   alt={`Image of project: ${project.name}`}
-                  layout="fill" // Ensures the image fills the container without stretching
-                  objectFit="cover"
-                  className="rounded-t-md transition-opacity duration-200 ease-in-out hover:opacity-80"
-                  priority={projectIndex === 0} // Load first image faster (e.g., if it's the topmost in a grid)
-                  sizes="(max-width: 640px) 100vw, 50vw" // Responsive image sizes for various screen widths
+                  fill // Replaces layout="fill"
+                  className="rounded-t-md object-cover transition-opacity duration-200 ease-in-out hover:opacity-80"
+                  priority={projectIndex === 0} // Load first image faster
+                  sizes="(max-width: 640px) 100vw, 50vw" // Responsive sizes for better optimization
                 />
               </figure>
 

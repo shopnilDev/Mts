@@ -4,9 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 // ==== icons ====
-import logo1 from "../public/image/icons/cellular-tower.png";
+// import logo1 from "../public/image/icons/cellular-tower.png";
 import { fetchClient } from "@/helpers/fetchClient";
 import { getMetaValueByMetaName } from "@/helpers/metaHelpers";
+import ServiceCard from "./ServiceCard";
 
 const Services = async () => {
   let services;
@@ -30,11 +31,6 @@ const Services = async () => {
     //   </div>
     // );
   }
-  const shortDes = getMetaValueByMetaName(
-    services,
-    "service_short_description"
-  );
-  console.log(shortDes);
 
   return (
     <>
@@ -52,33 +48,7 @@ const Services = async () => {
           {/* { JSON.stringify(services) } */}{" "}
           <div className="md:grid md:grid-cols-4 md:gap-10 gap-7 grid">
             {services?.map((service, index) => (
-              <div
-                key={index}
-                className="text-white min-h-[450px] flex flex-col group w-48"
-              >
-                <Image
-                  src={getMetaValueByMetaName(services, "service_icon")}
-                  width={35}
-                  height={35}
-                  alt={`${service?.name} logo`}
-                />
-                <h1 className="text-2xl font-bold my-2">{service?.name}</h1>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: service?.description
-                      ? `${service.description.slice(0, 200)}${
-                          service.description.length > 200 ? "..." : ""
-                        }`
-                      : "",
-                  }}
-                ></p>
-                <Link
-                  href={`services/${service?.slug}`}
-                  className="underline mt-5 block font-semibold capitalize"
-                >
-                  Learn more
-                </Link>
-              </div>
+              <ServiceCard key={index} service={service} />
             ))}
           </div>
         </div>
