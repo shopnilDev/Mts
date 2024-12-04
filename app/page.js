@@ -1,6 +1,6 @@
 import Brands from "@/components/Brands";
 import Header from "@/components/Header";
-import Mobile_tower from "@/components/Mobile_tower";
+import Mobile_tower from "@/components/MobileTower";
 import Partners from "@/components/Partners";
 import Projects from "@/components/Projects";
 import Services from "@/components/Services";

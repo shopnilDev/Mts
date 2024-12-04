@@ -3,7 +3,7 @@ import React from "react";
 const Mobile_tower = () => {
   return (
     <>
-      <section className="py-10 bg-[#2D2D2D]">
+      <section className="bg-[#2D2D2D]">
         <div className="flex flex-col md:flex-row gap-6 ">
           <video
             className="md:w-1/2 md:h-full"
