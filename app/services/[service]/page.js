@@ -44,14 +44,11 @@ const page = async ({ params }) => {
               {service?.name}
             </h1>
             
-
             <div
               className="mt-5 leading-5  font-thin"
               dangerouslySetInnerHTML={{ __html: service?.description }}
             />
 
-       
-            
           </div>
 
           {/* Right Side (Image or Video) */}
