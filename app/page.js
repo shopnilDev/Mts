@@ -7,14 +7,16 @@ import Services from "@/components/Services";
 import Navbar from "@/components/Navbar";
 
 import { getNavData } from "@/helpers/getNavbarData";
+import { useCallback } from "react";
 
 export default async function Home() {
   const { menuItems, settings } = await getNavData();
 
+  // useCallback(()=>{})
+
   return (
     <>
       {/* <Top_header /> */}
-
       <Navbar menuItems={menuItems} settings={settings} />
       <Header />
       {/* <Banner /> */}
@@ -24,7 +26,6 @@ export default async function Home() {
       <Services />
       <Partners />
       <Projects />
-
       <Mobile_tower />
     </>
   );
