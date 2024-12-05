@@ -43,17 +43,17 @@ const Brands = async () => {
             </h1>
           </div>
           {/* Right side */}
-          <div className="flex  divide-x-2 divide-slate-400 py-14">
+          <div className="flex  divide-x-2 divide-slate-400 py-10">
             <div className="pr-6 pl-2">
-              <Image src={logo1} width={250} height={250} className="mx-auto" />
+              <Image src={logo1} alt="icon" width={250} height={250} className="mx-auto" />
             </div>
             <div className="pl-10 grid grid-cols-3  ">
-              <Image src={logo2} width={60} height={40} className="" />
-              <Image src={logo3} width={100} height={40} className="" />
-              <Image src={logo4} width={100} height={40} className="" />
-              <Image src={logo5} width={70} height={40} className="" />
-              <Image src={logo6} width={100} height={40} className="" />
-              <Image src={logo7} width={150} height={100} className="mt-2" />
+              <Image src={logo2} alt="icon" width={60} height={40} className="" />
+              <Image src={logo3} alt="icon" width={100} height={40} className="" />
+              <Image src={logo4} alt="icon" width={100} height={40} className="" />
+              <Image src={logo5} alt="icon" width={70} height={40} className="" />
+              <Image src={logo6} alt="icon" width={100} height={40} className="" />
+              <Image src={logo7} alt="icon" width={150} height={100} className="mt-2" />
             </div>
           </div>
         </div>

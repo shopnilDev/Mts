@@ -33,12 +33,12 @@ const page = async ({ params }) => {
 //  console.log("from project page , ", project);
   return (
     <>
-    <div className="bg-[#2D2D2D] fixed w-full top-0 z-30">
+    <div className="bg-[#2D2D2D] sticky w-full top-0 z-30">
       <Navbar menuItems={menuItems} settings={settings} />
     </div>
 
     <section className="bg-topHeaderColor px-20">
-      <div className="container mx-auto flex flex-col md:flex-row gap-10 mt-28 ">
+      <div className="container mx-auto flex flex-col md:flex-row gap-10 ">
         {/* Left Side */}
         <div className="md:basis-1/2 text-white py-20  h-auto ">
           <h1 className="text-3xl md:text-4xl font-semibold font-mono w-fit pb-4 border-b  border-b-gray-700">

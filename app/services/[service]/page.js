@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
 import { getNavData } from "@/helpers/getNavbarData";
@@ -32,28 +31,29 @@ const page = async ({ params }) => {
 
   return (
     <>
-      <div className="bg-[#2D2D2D] fixed w-full top-0 z-30">
-        <Navbar menuItems={menuItems} settings={settings} />
+      {/* Non-Sticky Wrapper */}
+      
+        <div className="bg-[#2D2D2D]  sticky w-full top-0 z-30">
+          <Navbar menuItems={menuItems} settings={settings} />
+       
       </div>
 
       <section className="bg-topHeaderColor px-20">
-        <div className="container mx-auto flex flex-col md:flex-row gap-10 mt-28 ">
+        <div className="container mx-auto flex flex-col md:flex-row gap-10">
           {/* Left Side */}
-          <div className="md:basis-1/2 text-white py-20  h-auto ">
-            <h1 className="text-3xl md:text-4xl font-semibold font-mono w-fit pb-4 border-b  border-b-gray-700">
+          <div className="md:basis-1/2 text-white py-20 h-auto">
+            <h1 className="text-3xl md:text-4xl font-semibold font-mono w-fit pb-4 border-b border-b-gray-700">
               {service?.name}
             </h1>
-            
+
             <div
-              className="mt-5 leading-5  font-thin"
+              className="mt-5 leading-5 font-thin"
               dangerouslySetInnerHTML={{ __html: service?.description }}
             />
-
           </div>
 
           {/* Right Side (Image or Video) */}
           <div className="basis-1/2 flex items-center justify-center h-[1000px] relative">
-          
             <video
               autoPlay
               muted
@@ -61,8 +61,7 @@ const page = async ({ params }) => {
               className="h-full object-cover"
               src="https://video.wixstatic.com/video/f21e62_cd7709d9f13c4421a4a017f03eceebf7/1080p/mp4/file.mp4"
             ></video>
-            </div>
-         
+          </div>
         </div>
       </section>
     </>

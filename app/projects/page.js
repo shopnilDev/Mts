@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useEffect, useState, useCallback, useMemo } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import axiosInstance from "@/helpers/axiosInstance";
 import { getNavData } from "@/helpers/getNavbarData";
@@ -95,7 +93,7 @@ const page = () => {
 
   return (
     <>
-      <div className="bg-[#2D2D2D] fixed w-full top-0 z-30">
+      <div className="bg-[#2D2D2D] sticky w-full top-0 z-30">
         <Navbar menuItems={memoizedMenuItems} settings={memoizedSettings} />
       </div>
 
