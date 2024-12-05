@@ -29,7 +29,7 @@ const AboutPage = async () => {
 
   return (
     <>
-      <div className="bg-gray-800 fixed w-full top-0">
+      <div className="bg-[#2D2D2D] fixed w-full top-0">
         <Navbar menuItems={menuItems} settings={settings} />
       </div>
 
@@ -41,7 +41,7 @@ const AboutPage = async () => {
             </h1>
 
             <div
-              className="mt-5 leading-7 font-thin"
+              className="mt-5 leading-5 text-[14px] font-thin"
               dangerouslySetInnerHTML={{ __html: data?.description }}
             />
           </div>

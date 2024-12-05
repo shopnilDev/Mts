@@ -59,7 +59,7 @@ const Brands = async () => {
         </div>
       </section>
 
-      <section className="about_inteltec py-10">
+      <section className="about_inteltec py-10 px-10">
         <div className="container mx-auto">
           <h1 className="text-[56px] mb-14 text-white leading-10">
             About Inteltec{" "}

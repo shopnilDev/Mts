@@ -4,7 +4,7 @@ import Banner from "./Banner";
 const Header = () => {
   return (
     <>
-      <main className="min-h-screen ">
+      <main className="min-h-screen px-10  ">
         <video
           className="absolute left-0 top-0 -z-10   overflow-hidden object-cover w-full "
           loop
