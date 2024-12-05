@@ -12,6 +12,8 @@ const Navbar = ({ menuItems, settings }) => {
   const [submenuState, setSubmenuState] = useState({}); // Track submenu visibility per item
   const [isSticky, setIsSticky] = useState(false);
 
+// console.log("from navbar")
+
   // Handle sticky navbar on scroll
   useEffect(() => {
     const handleScroll = () => {
@@ -131,4 +133,4 @@ const Navbar = ({ menuItems, settings }) => {
   );
 };
 
-export default Navbar;
+export default React.memo(Navbar);

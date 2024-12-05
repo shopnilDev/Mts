@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import axiosInstance from "@/helpers/axiosInstance";
 import { getNavData } from "@/helpers/getNavbarData";
 import SkeletonCard from "@/components/SkeletonCard";
+import ProjectCard from "@/components/ProjectCard";
 
 const page = () => {
   const [menuItems, setMenuItems] = useState([]);
@@ -18,6 +19,22 @@ const page = () => {
   const [pageNo, setPageNo] = useState(1);
   const [perPage, setPerPage] = useState(3);
 
+  // Memoized function to fetch navigation data
+  const fetchNavData = useCallback(async () => {
+    try {
+      const { menuItems, settings } = await getNavData();
+      setMenuItems(menuItems);
+      setSettings(settings);
+    } catch (error) {
+      console.error("Failed to fetch navigation data:", error);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchNavData();
+  }, [fetchNavData]);
+
+  // Fetch project data
   useEffect(() => {
     const url = `posts?per_page=${perPage}&term_type=product&page=${pageNo}`;
 
@@ -33,26 +50,18 @@ const page = () => {
       }
     };
     fetchAllProjects();
-
-    const fetchNavData = async () => {
-      try {
-        const { menuItems, settings } = await getNavData();
-        setMenuItems(menuItems); // Store menu items in state
-        setSettings(settings); // Store settings in state
-      } catch (error) {
-        console.error("Failed to fetch navigation data:", error);
-      }
-    };
-
-    fetchNavData();
   }, [perPage]);
 
   const handleSeeMore = () => {
     setPerPage((prev) => prev + 3);
   };
+
   const handleSeeLess = () => {
-    setPerPage((prev) => prev - 3);
+    setPerPage((prev) => Math.max(prev - 3, 3));
   };
+
+  const memoizedMenuItems = useMemo(() => menuItems, [menuItems]);
+  const memoizedSettings = useMemo(() => settings, [settings]);
 
   let content;
 
@@ -68,7 +77,7 @@ const page = () => {
     );
   } else if (error) {
     content = (
-      <div className=" min-h-screen">
+      <div className="min-h-screen">
         <p className="text-center">
           Failed To Load Projects Please Reload or Try Again
         </p>
@@ -78,29 +87,7 @@ const page = () => {
     content = (
       <>
         {projects.map((project, projectIndex) => (
-          <Link href={`/projects/${project?.slug}`} key={projectIndex}>
-            <article className="relative overflow-hidden rounded-md shadow-lg bg-white hover:shadow-xl duration-200 ease-in-out">
-              {/* Image Section */}
-              <figure className="w-full h-48 md:h-64 relative">
-                <Image
-                  src={project.featured_image}
-                  alt={`Image of project: ${project.name}`}
-                  layout="fill" // Ensures the image fills the container without stretching
-                  objectFit="cover"
-                  className="rounded-t-md transition-opacity duration-200 ease-in-out hover:opacity-80"
-                  priority={projectIndex === 0} // Load first image faster (e.g., if it's the topmost in a grid)
-                  sizes="(max-width: 640px) 100vw, 50vw" // Responsive image sizes for various screen widths
-                />
-              </figure>
-
-              {/* Project Name */}
-              <div className="p-4">
-                <h2 className="text-lg font-semibold text-gray-800 text-center truncate">
-                  {project.name}
-                </h2>
-              </div>
-            </article>
-          </Link>
+         <ProjectCard project={project} key={projectIndex}/>
         ))}
       </>
     );
@@ -109,12 +96,12 @@ const page = () => {
   return (
     <>
       <div className="bg-[#2D2D2D] fixed w-full top-0 z-30">
-        <Navbar menuItems={menuItems} settings={settings} />
+        <Navbar menuItems={memoizedMenuItems} settings={memoizedSettings} />
       </div>
 
       <section className="md:pt-40 pt-28 pb-10">
         <div className="max-w-screen-lg mx-auto">
-          <h1 className="text-5xl text-gray-600 mb-8 font-medium border-gray-600 border-b  inline-block pb-2 md:pb-4 ">
+          <h1 className="text-5xl text-gray-600 mb-8 font-medium border-gray-600 border-b inline-block pb-2 md:pb-4">
             Projects
           </h1>
 
@@ -122,24 +109,21 @@ const page = () => {
             {content}
           </div>
 
-          {/* buttons */}
-
+          {/* Buttons */}
           {meta?.current_page < meta?.last_page && (
             <button
               onClick={handleSeeMore}
-              href={"/projects"}
-              className=" w-fit p-2 px-5 text-sm md:text-lg rounded-sm border-2 font-light capitalize hover:text-white hover:bg-black overflow-hidden duration-200 ease-in-out block mx-auto mt-10"
+              className="w-fit p-2 px-5 text-sm md:text-lg rounded-sm border-2 font-light capitalize hover:text-white hover:bg-black overflow-hidden duration-200 ease-in-out block mx-auto mt-10"
             >
-              show more
+              Show More
             </button>
           )}
-          {meta?.current_page === meta?.last_page && (
+          {meta?.current_page === meta?.last_page && perPage > 3 && (
             <button
               onClick={handleSeeLess}
-              href={"/projects"}
-              className=" w-fit p-2 px-5 text-sm md:text-lg rounded-sm border-2 font-light capitalize hover:text-white hover:bg-black overflow-hidden duration-200 ease-in-out block mx-auto mt-10"
+              className="w-fit p-2 px-5 text-sm md:text-lg rounded-sm border-2 font-light capitalize hover:text-white hover:bg-black overflow-hidden duration-200 ease-in-out block mx-auto mt-10"
             >
-              show Less
+              Show Less
             </button>
           )}
         </div>

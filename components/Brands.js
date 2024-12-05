@@ -34,19 +34,7 @@ const Brands = async () => {
 
   return (
     <>
-      {/* <div className="flex flex-col gap-5 md:flex-row md:w-10/12 md:mx-auto md:justify-start md:items-center">
-        <h1 className="font-serif text-xl text-center">Subsidiary of</h1>
-        <Image src={logo1} width={200} height={200} className="mx-auto" />
-        <div className="grid grid-cols-3 gap-5 md:gap-10">
-          <Image src={logo2} width={70} height={50} className="md:w-20" />
-          <Image src={logo3} width={70} height={50} className="md:w-20" />
-          <Image src={logo4} width={70} height={50} className="md:w-20" />
-          <Image src={logo5} width={70} height={50} className="md:w-20" />
-          <Image src={logo6} width={70} height={50} className="md:w-20" />
-          <Image src={logo7} width={80} height={50} className="md:w-20" />
-        </div>
-      </div> */}
-      <section className="mt-48  bg-white">
+      <section className="mt-42  bg-white">
         <div className=" flex   ">
           {/* Left side */}
           <div className="w-[37%] flex justify-end bg-[#DBDBDB] items-center pr-8 ">
