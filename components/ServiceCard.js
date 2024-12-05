@@ -7,7 +7,7 @@ export default function ServiceCard({ service }) {
   // const extraFields = service?.extraFields || [];
   // const value = getExtraFieldValue(extraFields, "service_icon");
   // console.log("from service card, service icon", value);
-  console.log("from service card, ", service?.name,service?.description);
+  // console.log("from service card, ", service?.name,service?.description);
 
   return (
     <div className="text-white min-h-[450px] flex flex-col group w-48 ">
