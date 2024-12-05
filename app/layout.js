@@ -1,13 +1,20 @@
-import { Barlow } from "next/font/google";
+import { Barlow, Questrial } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+
 
 
 const barlow = Barlow({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
+
+const questrial = Questrial({
+  weight: '400', // Questrial is available in a single weight (400)
+  subsets: ['latin'],
+});
+
+
 
 export const metadata = {
   title: " Inteltec Emirates",

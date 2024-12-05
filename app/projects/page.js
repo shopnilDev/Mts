@@ -17,7 +17,7 @@ const page = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [pageNo, setPageNo] = useState(1);
-  const [perPage, setPerPage] = useState(3);
+  const [limit, setLimit] = useState(6);
 
   // Memoized function to fetch navigation data
   const fetchNavData = useCallback(async () => {
@@ -36,7 +36,7 @@ const page = () => {
 
   // Fetch project data
   useEffect(() => {
-    const url = `posts?per_page=${perPage}&term_type=product&page=${pageNo}`;
+    const url = `posts?per_page=${limit}&term_type=product&page=${pageNo}`;
 
     const fetchAllProjects = async () => {
       try {
@@ -50,14 +50,14 @@ const page = () => {
       }
     };
     fetchAllProjects();
-  }, [perPage]);
+  }, [limit]);
 
   const handleSeeMore = () => {
-    setPerPage((prev) => prev + 3);
+    setLimit((prev) => prev + 3);
   };
 
   const handleSeeLess = () => {
-    setPerPage((prev) => Math.max(prev - 3, 3));
+    setLimit((prev) => Math.max(prev - 3, 3));
   };
 
   const memoizedMenuItems = useMemo(() => menuItems, [menuItems]);
@@ -99,13 +99,13 @@ const page = () => {
         <Navbar menuItems={memoizedMenuItems} settings={memoizedSettings} />
       </div>
 
-      <section className="md:pt-40 pt-28 pb-10">
-        <div className="max-w-screen-lg mx-auto">
-          <h1 className="text-5xl text-gray-600 mb-8 font-medium border-gray-600 border-b inline-block pb-2 md:pb-4">
+      <section className="bg-[#E8E8E8] pt-40  pb-10">
+        <div className="max-w-screen-lg mx-auto px-2 md:px-32">
+          <h1 className="text-5xl text-gray-600 mb-8 font-medium border-gray-600 border-b inline-block pb-4 md:pb-4">
             Projects
           </h1>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 md:gap-12 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-3  gap-6">
             {content}
           </div>
 
@@ -113,15 +113,19 @@ const page = () => {
           {meta?.current_page < meta?.last_page && (
             <button
               onClick={handleSeeMore}
-              className="w-fit p-2 px-5 text-sm md:text-lg rounded-sm border-2 font-light capitalize hover:text-white hover:bg-black overflow-hidden duration-200 ease-in-out block mx-auto mt-10"
+              className="bg-black w-fit p-2 px-5 text-sm md:text-lg rounded-sm border-2 
+              font-light capitalize text-white  overflow-hidden duration-200
+               ease-in-out block mx-auto mt-10"
             >
               Show More
             </button>
           )}
-          {meta?.current_page === meta?.last_page && perPage > 3 && (
+          {meta?.current_page === meta?.last_page && limit > 3 && (
             <button
               onClick={handleSeeLess}
-              className="w-fit p-2 px-5 text-sm md:text-lg rounded-sm border-2 font-light capitalize hover:text-white hover:bg-black overflow-hidden duration-200 ease-in-out block mx-auto mt-10"
+              className="bg-black w-fit p-2 px-5 text-sm md:text-lg rounded-sm border-2 
+              font-light capitalize text-white  overflow-hidden duration-200
+               ease-in-out block mx-auto mt-10"
             >
               Show Less
             </button>

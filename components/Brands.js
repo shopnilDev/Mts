@@ -60,13 +60,13 @@ const Brands = async () => {
       </section>
 
       <section className="about_inteltec py-10 px-10">
-        <div className="container mx-auto">
+        <div className="max-w-5xl mx-auto ">
           <h1 className="text-[56px] mb-14 text-white leading-10">
             About Inteltec{" "}
           </h1>
-          <div className="md:w-1/2">
+          <div className="md:w-1/2 pr-28">
             <div
-              className="text-white text-sm -tracking-tighter leading-6  md:text-lg"
+              className="text-sm  leading-6 font-thin  "
               dangerouslySetInnerHTML={{ __html: data?.description }}
             />
 

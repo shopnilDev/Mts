@@ -12,16 +12,17 @@ export default function ServiceCard({ service }) {
   return (
     <div className="text-white min-h-[450px] flex flex-col group w-48 ">
       <Image src={`${service?.featured_image}`} width={35} height={35} alt={`${service?.name} logo`} />
-      <h1 className="text-2xl font-bold my-2">{service?.name}</h1>
-      <p
+      <h1 className="text-[20px] leading-7 my-2">{service?.name}</h1>
+      <div
+      className="text-[12px] font-thin"
         dangerouslySetInnerHTML={{
           __html: service?.description
-            ? `${service?.description.slice(0, 200)}${
-                service?.description.length > 200 ? "..." : ""
+            ? `${service?.description.slice(0, 250)}${
+                service?.description.length > 250 ? "..." : ""
               }`
             : "",
         }}
-      ></p>
+      ></div>
       <Link
         href={`services/${service?.slug}`}
         className="underline mt-5 block font-semibold capitalize"

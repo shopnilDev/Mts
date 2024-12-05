@@ -85,16 +85,18 @@ const Footer = async() => {
         </div>
         {/* Bottom */}
         <div className="bg-[#242323]">
-          <div className="max-w-screen-lg  mx-auto flex items-center justify-between flex-wrap py-3 ">
-            <h1 className="text-white text-sm"> Inteltec Emirates Group</h1>
-            <Image src={inteltec} width={100} height={100} alt="inteltec" />
-            <Image src={ipay} width={50} height={50} alt="ipay" />
-            <Image src={vodatel} width={100} height={100} alt="vodatel" />
-            <Image src={iparama} width={60} height={60} alt="iparama" />
-            <Image src={gul} width={100} height={100} alt="gul" />
-            <Image src={ftc} width={60} height={60} alt="ftc" />
-          </div>
-        </div>
+      <div className="max-w-screen-lg mx-auto flex items-center justify-between flex-wrap py-3">
+        <h1 className="text-white text-sm">Inteltec Emirates Group</h1>
+        {/* Image components with updated API */}
+        <Image src={inteltec} width={100} height={100} alt="inteltec" />
+        <Image src={ipay} width={50} height={50} alt="ipay" />
+        <Image src={vodatel} width={100} height={100} alt="vodatel" />
+        <Image src={iparama} width={60} height={60} alt="iparama" />
+        <Image src={gul} width={100} height={100} alt="gul" />
+        <Image src={ftc} width={60} height={60} alt="ftc" />
+      </div>
+    </div>
+
       </footer>
     </>
   );

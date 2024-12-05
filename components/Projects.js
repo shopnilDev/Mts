@@ -1,6 +1,7 @@
 import { fetchClient } from "@/helpers/fetchClient";
 import Image from "next/image";
 import Link from "next/link";
+import ProjectCard from "./ProjectCard";
 
 const Projects = async () => {
   let projects;
@@ -27,35 +28,14 @@ const Projects = async () => {
 
   return (
     <>
-      <section className="bg-sectionBgColor py-14">
-        <div className="max-w-screen-lg mx-auto">
+      <section className="bg-sectionBgColor py-14 ">
+        <div className="max-w-screen-lg mx-auto px-2 md:px-32">
           <h1 className="text-5xl text-gray-300 mb-8 font-medium">Projects</h1>
 
           {projects.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 md:gap-12 gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-3  gap-10">
               {projects.map((project, projectIndex) => (
-                <Link href={`/projects/${project?.slug}`} key={projectIndex}>
-                  <article className="relative overflow-hidden rounded-md shadow-lg bg-white hover:shadow-xl duration-200 ease-in-out">
-                    {/* Image Section */}
-                    <figure className="w-full h-40 md:h-56 relative">
-                      <Image
-                        src={project.featured_image || "/image/placeholder.png"}
-                        alt={`Image of project: ${project.name}`}
-                        fill
-                        className="rounded-t-md object-cover transition-opacity duration-200 ease-in-out hover:opacity-80"
-                        // priority={projectIndex === 0}
-                        sizes="(max-width: 640px) 100vw, 50vw"
-                      />
-                    </figure>
-
-                    {/* Project Name */}
-                    <div className="p-4">
-                      <h2 className="text-lg font-semibold text-gray-800 text-center truncate">
-                        {project.name}
-                      </h2>
-                    </div>
-                  </article>
-                </Link>
+                 <ProjectCard project={project} key={projectIndex}/>
               ))}
             </div>
           ) : (
