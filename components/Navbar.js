@@ -12,7 +12,7 @@ const Navbar = ({ menuItems, settings }) => {
   const [submenuState, setSubmenuState] = useState({}); // Track submenu visibility per item
   const [isSticky, setIsSticky] = useState(false);
 
-// console.log("from navbar")
+  // console.log("from navbar")
 
   // Handle sticky navbar on scroll
   useEffect(() => {
@@ -68,7 +68,7 @@ const Navbar = ({ menuItems, settings }) => {
 
         {/* Mobile Menu */}
         {opennav && (
-          <div className="text-white flex flex-col absolute left-0 top-full bg-topHeaderColor w-full p-3 gap-3 rounded-md font-light">
+          <div className="text-white flex flex-col absolute left-0 top-full bg-topHeaderColor w-full p-3 gap-3 rounded-b-md font-light">
             {menuItems?.map((item) => (
               <div key={item.id}>
                 <Link

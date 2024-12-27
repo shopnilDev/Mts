@@ -9,24 +9,8 @@
 ::-webkit-scrollbar-thumb {
   background-color: gainsboro;
 }
-.about_inteltec {
-  background: url('../public/image/inteltec.png') center center no-repeat;
-  background-size: cover;
-  position: relative;
-  background-attachment: fixed;
-  z-index: 1;
-}
 
-.about_inteltec::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.527);
-  z-index: -1;
-}
+
 
 .videoBackground::after {
   content: '';
@@ -45,3 +29,32 @@
 .group:nth-child(even) {
   justify-content: flex-end;
 }
+
+.about_inteltec {
+  background-image: url('../public/image/inteltec.png');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.about_inteltec::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 2;
+}
+
+
+

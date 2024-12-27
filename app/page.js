@@ -7,16 +7,15 @@ import Services from "@/components/Services";
 import Navbar from "@/components/Navbar";
 import { getNavData } from "@/helpers/getNavbarData";
 
-
 export default async function Home() {
   const { menuItems, settings } = await getNavData();
 
   return (
     <>
-    <Navbar menuItems={menuItems} settings={settings} />  
+      <Navbar menuItems={menuItems} settings={settings} />
       <Header />
       {/* <Banner /> */}
-      <div className="-mt-64">
+      <div className="-mt-64 ">
         <Brands />
       </div>
       <Services />

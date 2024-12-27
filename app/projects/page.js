@@ -30,7 +30,7 @@ const page = () => {
 
   useEffect(() => {
     fetchNavData();
-  }, [fetchNavData]);
+  }, []);
 
   // Fetch project data
   useEffect(() => {
@@ -85,7 +85,7 @@ const page = () => {
     content = (
       <>
         {projects.map((project, projectIndex) => (
-         <ProjectCard project={project} key={projectIndex}/>
+          <ProjectCard project={project} key={projectIndex} />
         ))}
       </>
     );
@@ -97,7 +97,7 @@ const page = () => {
         <Navbar menuItems={memoizedMenuItems} settings={memoizedSettings} />
       </div>
 
-      <section className="bg-[#E8E8E8] pt-40  pb-10">
+      <section className="bg-[#E8E8E8] pt-16  pb-10">
         <div className="max-w-screen-lg mx-auto px-2 md:px-32">
           <h1 className="text-5xl text-gray-600 mb-8 font-medium border-gray-600 border-b inline-block pb-4 md:pb-4">
             Projects

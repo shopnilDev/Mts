@@ -75,7 +75,9 @@ const Page = () => {
 
       <section className="mt-20">
         <div className="container mx-auto px-3 py-10">
-          <h2 className="text-4xl font-bold mb-5 text-center">Get in Touch</h2>
+          <h2 className="text-4xl font-bold mb-5 text-center mt-5">
+            Get in Touch
+          </h2>
           <div className="flex flex-col md:flex-row justify-center md:gap-10 gap-10">
             <div className="basis-1/3 w-full shadow-md p-5 bg-white">
               <form onSubmit={handleSubmitForm} className="flex flex-col gap-5">
