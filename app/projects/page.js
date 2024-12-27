@@ -34,7 +34,7 @@ const page = () => {
 
   // Fetch project data
   useEffect(() => {
-    const url = `posts?per_page=${limit}&term_type=product&page=${pageNo}`;
+    const url = `/posts?per_page=${limit}&term_type=product&page=${pageNo}`;
 
     const fetchAllProjects = async () => {
       try {
