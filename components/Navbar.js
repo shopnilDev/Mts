@@ -13,8 +13,6 @@ const Navbar = ({ menuItems, settings }) => {
   const [submenuState, setSubmenuState] = useState({}); // Track submenu visibility per item
   const [isSticky, setIsSticky] = useState(false);
 
-  // console.log("from navbar")
-
   // Handle sticky navbar on scroll
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +38,7 @@ const Navbar = ({ menuItems, settings }) => {
   };
 
   // Use helper methods to get the logo
-  console.log("settings", settings);
+  // console.log("settings", settings);
   const logo = getMetaValueByMetaName(settings, "site_logoimg_id");
   console.log("logo:", logo);
 
@@ -112,6 +110,7 @@ const Navbar = ({ menuItems, settings }) => {
                 href={item.label === "Partners" ? "/#partners" : item.link}
                 // href="#partners"
                 // href={item.link}
+
                 className="text-lg hover:text-hoverBgColor duration-200 ease-in-out flex items-center gap-0.5"
               >
                 {item.label}
