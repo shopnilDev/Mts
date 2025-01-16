@@ -10,8 +10,7 @@ export const getNavData = async () => {
   );
 
   const menuData = menuRes?.data || { data: { items: [] } };
-  const settingsData = settingsRes?.data || {};
-
+  const settingsData = settingsRes || {};
   const menuItems = menuData?.items || [];
   const settings = settingsData;
 

@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import mtsLogo from "./../public/image/logo.png";
 import { HiMiniBars3 } from "react-icons/hi2";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { getMetaValueByMetaName } from "@/helpers/metaHelpers";
+import { getMediaLinkByMetaName } from "@/helpers/metaHelpers";
 import { ContactDrawer } from "./ContactDrawer";
+import { BASE_URL } from "@/helpers/baseUrl";
 
 const Navbar = ({ menuItems, settings }) => {
   const [opennav, setOpenNav] = useState(false);
@@ -36,11 +36,8 @@ const Navbar = ({ menuItems, settings }) => {
       [id]: !prevState[id], // Toggle submenu for this specific item
     }));
   };
-
-  // Use helper methods to get the logo
-  // console.log("settings", settings);
-  const logo = getMetaValueByMetaName(settings, "site_logoimg_id");
-  console.log("logo:", logo);
+  
+  const logo = getMediaLinkByMetaName(settings, "site_logoimg_id");  
 
   return (
     <div
@@ -55,7 +52,7 @@ const Navbar = ({ menuItems, settings }) => {
         {/* Logo */}
         <Link href={"/"}>
           <Image
-            src={mtsLogo}
+            src={ BASE_URL + logo }
             alt="logo"
             width={300}
             height={300}

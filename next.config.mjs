@@ -5,10 +5,7 @@ const nextConfig = {
   },
   images: {
     domains: [
-      "mathmozocms.test",
-      "admin.mtsbd.net",
-      "www.isec.com",
-      "static.wixstatic.com",
+      "mathmozocms.test"
     ],
   },
   async rewrites() {
