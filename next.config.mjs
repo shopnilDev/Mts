@@ -15,8 +15,8 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "https://admin.mtsbd.net/api/v1/:path*", // Proxy to Backend
-        // destination: "http://mathmozocms.test/api/v1/:path*", // Proxy to Backend
+        //destination: "https://admin.mtsbd.net/api/v1/:path*", // Proxy to Backend
+        destination: "http://mathmozocms.test/api/v1/:path*", // Proxy to Backend
       },
     ];
   },

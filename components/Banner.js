@@ -2,6 +2,7 @@
 
 import axiosInstance from "@/helpers/axiosInstance";
 import { getMetaValueByMetaName } from "@/helpers/metaHelpers";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const Banner = () => {
@@ -25,7 +26,7 @@ const Banner = () => {
   // console.log(mainSpeach);
   return (
     <>
-      <div className="container mx-auto">
+      <div className="container mx-auto ">
         {/* ==== banner content ====  */}
 
         {/* <div
@@ -47,12 +48,13 @@ const Banner = () => {
             >
               learn more
             </button>
-            <button
+            <Link
+              href="#services"
               className="border border-[#0074BC] py-4 px-12 text-sm font-light rounded-sm
            text-white uppercase bg-buttonBgColor duration-500 ease-in-out mt-5"
             >
               services
-            </button>
+            </Link>
           </div>
         </div>
       </div>

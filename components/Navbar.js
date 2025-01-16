@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import inteltecLogo from "./../public/image/logo.png";
+import mtsLogo from "./../public/image/logo.png";
 import { HiMiniBars3 } from "react-icons/hi2";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { getMetaValueByMetaName } from "@/helpers/metaHelpers";
+import { ContactDrawer } from "./ContactDrawer";
 
 const Navbar = ({ menuItems, settings }) => {
   const [opennav, setOpenNav] = useState(false);
@@ -39,8 +40,9 @@ const Navbar = ({ menuItems, settings }) => {
   };
 
   // Use helper methods to get the logo
-  // const logo = getMetaValueByMetaName(settings, "site_logoimg_id");
-  // console.log(settings);
+  console.log("settings", settings);
+  const logo = getMetaValueByMetaName(settings, "site_logoimg_id");
+  console.log("logo:", logo);
 
   return (
     <div
@@ -48,11 +50,14 @@ const Navbar = ({ menuItems, settings }) => {
         isSticky ? "sticky top-0 bg-[#2D2D2D]" : ""
       } z-50 duration-200 ease-in-out`}
     >
-      <nav className="container mx-auto flex items-center justify-between py-2 w-full z-10 relative">
+      <div className="bg-[#242323] py-2">
+        <h4 className="text-center text-white text-sm">Mts Bd</h4>
+      </div>
+      <nav className="container mx-auto flex items-center justify-between py-1 w-full z-10 relative h-32 ">
         {/* Logo */}
         <Link href={"/"}>
           <Image
-            src={inteltecLogo}
+            src={mtsLogo}
             alt="logo"
             width={300}
             height={300}
@@ -104,7 +109,9 @@ const Navbar = ({ menuItems, settings }) => {
           {menuItems?.map((item) => (
             <li key={item.id} className="relative group">
               <Link
-                href={item.link}
+                href={item.label === "Partners" ? "/#partners" : item.link}
+                // href="#partners"
+                // href={item.link}
                 className="text-lg hover:text-hoverBgColor duration-200 ease-in-out flex items-center gap-0.5"
               >
                 {item.label}
@@ -127,6 +134,7 @@ const Navbar = ({ menuItems, settings }) => {
               )}
             </li>
           ))}
+          <ContactDrawer />
         </ul>
       </nav>
     </div>

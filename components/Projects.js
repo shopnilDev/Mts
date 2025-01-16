@@ -29,13 +29,13 @@ const Projects = async () => {
   return (
     <>
       <section className="bg-sectionBgColor py-14 ">
-        <div className="max-w-screen-lg mx-auto px-2 md:px-32">
+        <div className="max-w-screen-xl mx-auto px-2 md:px-32">
           <h1 className="text-5xl text-gray-300 mb-8 font-medium">Projects</h1>
 
           {projects.length > 0 ? (
             <div className="grid grid-cols-2 md:grid-cols-3  gap-10">
               {projects.map((project, projectIndex) => (
-                 <ProjectCard project={project} key={projectIndex}/>
+                <ProjectCard project={project} key={projectIndex} />
               ))}
             </div>
           ) : (

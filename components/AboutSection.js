@@ -45,16 +45,16 @@ const About = ({ description }) => {
   return (
     <section
       id="about-inteltec"
-      className="about_inteltec py-10 px-10 relative"
+      className="about_inteltec flex items-center px-10 relative min-h-screen "
       style={parallaxStyle}
     >
-      <div className="parallax-content max-w-5xl mx-auto relative z-10">
+      <div className="parallax-content max-w-[1350px] mx-auto relative z-10">
         <h1 className="text-[56px] mb-14 text-white leading-10">
           About Inteltec
         </h1>
         <div className="md:w-1/2 pr-28">
           <div
-            className="text-sm leading-6 font-thin text-white"
+            className="text-sm leading-8 tracking-wide text-[#BFC0C0]"
             dangerouslySetInnerHTML={{ __html: description }}
           />
         </div>

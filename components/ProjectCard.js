@@ -10,29 +10,31 @@ export default function ProjectCard({ project }) {
   // console.log("from service card, ", service);
 
   return (
-    <Link href={`/projects/${project?.slug}`} >
-            <article className="relative overflow-hidden rounded-sm shadow-lg bg-white hover:shadow-xl
-             duration-200 ease-in-out">
-              {/* Image Section */}
-              <figure className="w-full h-44 relative">
-                <Image
-                  src={project.featured_image}
-                  alt={`Image of project: ${project.name}`}
-                  fill
-                  className="rounded-t-sm object-cover transition-opacity
+    <Link href={`/projects/${project?.slug}`}>
+      <article
+        className="relative overflow-hidden rounded-sm shadow-lg bg-white hover:shadow-xl
+             duration-200 ease-in-out"
+      >
+        {/* Image Section */}
+        <figure className="w-full h-52 relative">
+          <Image
+            src={project.featured_image}
+            alt={`Image of project: ${project.name}`}
+            fill
+            className="rounded-t-sm object-cover transition-opacity
                    duration-200 ease-in-out hover:opacity-80"
-                //   priority={projectIndex === 0}
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                />
-              </figure>
+            //   priority={projectIndex === 0}
+            sizes="(max-width: 640px) 100vw, 50vw"
+          />
+        </figure>
 
-              {/* Project Name */}
-              <div className="px-4 py-2">
-                <h2 className="text-lg font-semibold text-gray-800 text-center truncate">
-                  {project.name}
-                </h2>
-              </div>
-            </article>
-          </Link>
+        {/* Project Name */}
+        <div className="px-4 py-2 bg-[#575757]">
+          <h2 className="text-md text-white text-center truncate ">
+            {project.name}
+          </h2>
+        </div>
+      </article>
+    </Link>
   );
 }

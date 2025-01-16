@@ -10,12 +10,14 @@ import { getNavData } from "@/helpers/getNavbarData";
 export default async function Home() {
   const { menuItems, settings } = await getNavData();
 
+  // console.log(settings);
+
   return (
     <>
       <Navbar menuItems={menuItems} settings={settings} />
       <Header />
       {/* <Banner /> */}
-      <div className="-mt-64 ">
+      <div className=" -mt-[244px] ">
         <Brands />
       </div>
       <Services />

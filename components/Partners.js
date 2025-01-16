@@ -29,7 +29,7 @@ const Partners = () => {
   ];
 
   return (
-    <section className="bg-white py-14 ">
+    <section id="partners" className="bg-white py-14 ">
       <div className="container mx-auto">
         <h2 className="text-5xl text-gray-600 mb-8 font-medium">Partners</h2>
         <div className="grid grid-cols-5 border border-gray-400">

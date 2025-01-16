@@ -73,7 +73,7 @@ const Page = () => {
         <Navbar menuItems={menuItems} settings={settings} />
       </div>
 
-      <section className="mt-20">
+      <section className="mt-28">
         <div className="container mx-auto px-3 py-10">
           <h2 className="text-4xl font-bold mb-5 text-center mt-5">
             Get in Touch

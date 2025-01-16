@@ -33,7 +33,7 @@ const Brands = async () => {
 
   return (
     <>
-      <section className="mt-42 bg-white">
+      <section className=" bg-white">
         <div className="flex">
           {/* Left side */}
           <div className="w-[37%] flex justify-end bg-[#DBDBDB] items-center pr-8">

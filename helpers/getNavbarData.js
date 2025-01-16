@@ -5,9 +5,9 @@ export const getNavData = async () => {
   const menuRes = await fetchClient(`/menus?menu=1`, {
     next: { revalidate: 60 },
   });
-  const settingsRes = await fetchClient(`/frontend/settings`, {
-    next: { revalidate: 60 },
-  });
+  const settingsRes = await fetchClient(
+    `/frontend/settings?meta_group=General`
+  );
 
   const menuData = menuRes?.data || { data: { items: [] } };
   const settingsData = settingsRes?.data || {};
