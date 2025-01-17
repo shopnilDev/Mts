@@ -9,6 +9,8 @@ const page = async ({ params }) => {
   const slug = params.project;
 
   let project;
+  let next_url;
+  let prev_url;
 
   try {
     const url = `/post?slug=${slug}`;
@@ -19,6 +21,8 @@ const page = async ({ params }) => {
     });
 
     project = responseData?.data;
+    next_url = responseData?.next_post_slug;
+    prev_url = responseData?.previous_post_slug;
   } catch (err) {
     return (
       <div className="text-center text-red-600">
@@ -30,7 +34,8 @@ const page = async ({ params }) => {
       </div>
     );
   }
-//  console.log("from project page , ", project);
+//  console.log("from project page , ", next_url);
+//  console.log("from project page , ", prev_url);
   return (
     <>
     <div className="bg-[#2D2D2D] sticky w-full top-0 z-30">
@@ -54,13 +59,13 @@ const page = async ({ params }) => {
       {/* Nex navigation */}
              <div className="mt-24">
                 <Link
-                  href={`/projects/${project?.prev_slug}`}
+                  href={`/projects/${prev_url}`}
                   className="border p-2 text-center px-10 font-light capitalize border-r-0"
                 >
                   Previous Project
                 </Link>
                 <Link
-                  href={`/projects/${project?.next_slug}`}
+                  href={`/projects/${next_url}`}
                   className="border p-2 text-center px-10 font-light capitalize border-r"
                 >
                   Next project
