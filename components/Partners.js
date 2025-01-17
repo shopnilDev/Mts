@@ -31,7 +31,7 @@ const Partners = async () => {
         <div className="container">
           <h2 className="text-5xl text-gray-600 mb-8 font-medium">Partners</h2>
         </div>
-        <div className="grid grid-cols-5 border border-gray-400">
+        <div className="grid grid-cols-5 border-y border-gray-400">
           {partners.map((partner, index) => (
             <div
               key={index}
