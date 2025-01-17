@@ -4,7 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { HiMiniBars3 } from "react-icons/hi2";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { getMediaLinkByMetaName } from "@/helpers/metaHelpers";
+import {
+  getMediaLinkByMetaName,
+  getMetaValueByMetaName,
+} from "@/helpers/metaHelpers";
 import { ContactDrawer } from "./ContactDrawer";
 import { BASE_URL } from "@/helpers/baseUrl";
 
@@ -36,23 +39,31 @@ const Navbar = ({ menuItems, settings }) => {
       [id]: !prevState[id], // Toggle submenu for this specific item
     }));
   };
-
+  // logic for parnter menu click navigation
   const scrollToSection = (sectionId) => {
-    const targetSection = document.getElementById(sectionId);
-    if (targetSection) {
-      const offset = 100; // Adjust this value to match your navbar's height
-      const elementPosition =
-        targetSection.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - offset;
+    // Check if we are on the homepage
+    if (window.location.pathname === "/") {
+      // If we're on the homepage, just scroll to the section
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        const offset = 100; // Adjust this value to match your navbar's height
+        const elementPosition =
+          targetSection.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - offset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    } else {
+      // If we're on a different page, navigate to the homepage first
+      window.location.href = "/#" + sectionId;
     }
   };
 
   const logo = getMediaLinkByMetaName(settings, "site_logoimg_id");
+  const site_title = getMetaValueByMetaName(settings, "site_name");
 
   return (
     <div
@@ -61,9 +72,7 @@ const Navbar = ({ menuItems, settings }) => {
       } z-50 duration-200 ease-in-out`}
     >
       <div className="bg-[#242323] py-2">
-        <h4 className="text-center text-white text-sm">
-          MOBILE TELE SOLUTIONS BANGLADESH
-        </h4>
+        <h4 className="text-center text-white text-sm">{site_title}</h4>
       </div>
       <nav className="container mx-auto flex items-center justify-between py-1 w-full z-10 relative h-32 ">
         {/* Logo */}
