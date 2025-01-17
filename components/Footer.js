@@ -1,30 +1,55 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-// === image ====
-import footerLogo from "../public/image/footer logo.webp";
-import linkedin from "../public/image/LinkedIn.webp";
-import inteltec from "../public/image/footer icon/Inteltec Emirates.webp";
-import ipay from "../public/image/footer icon/iPay.webp";
-import vodatel from "../public/image/footer icon/Vodatel.webp";
-import iparama from "../public/image/footer icon/iParama.webp";
-import gul from "../public/image/footer icon/GULFTEC.webp";
-import ftc from "../public/image/footer icon/ftc.webp";
 import { fetchClient } from "@/helpers/fetchClient";
-import { getMetaValueByMetaName } from "@/helpers/metaHelpers";
+import {
+  getMediaLinkByMetaName,
+  getMetaValueByMetaName,
+} from "@/helpers/metaHelpers";
+import { getNavData } from "@/helpers/getNavbarData";
+import { BASE_URL } from "@/helpers/baseUrl";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faLinkedin,
+  faFacebook,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
 
-const Footer = async() => {
+const Footer = async () => {
+  let sisters;
+  try {
+    const url = `/posts?per_page=6&term_type=sister_concerns`;
+    const responseData = await fetchClient(url, {
+      next: {
+        revalidate: 30,
+      },
+    });
 
-  const settings = await fetchClient(`/frontend/settings?meta_group=Footer Section`, {
-    next: { revalidate: 60 },
-  });
+    sisters = responseData?.data;
+  } catch (err) {
+    console.log("failed to fetch sister data");
+  }
 
-//  Use helper methods to get the Footer Settings
-  const support = getMetaValueByMetaName(settings, "footer_content");
-  const copyright = getMetaValueByMetaName(settings, "bottom_footer_content");
-  const contact = getMetaValueByMetaName(settings, "german_address");
-  // console.log(support);
+  const { settings } = await getNavData();
+
+  const footer_settings = await fetchClient(
+    `/frontend/settings?meta_group=Footer Section`,
+    {
+      next: { revalidate: 60 },
+    }
+  );
+
+  // Use helper methods to get the Footer Settings
+  const support = getMetaValueByMetaName(footer_settings, "footer_content");
+  const copyright = getMetaValueByMetaName(
+    footer_settings,
+    "bottom_footer_content"
+  );
+  const contact = getMetaValueByMetaName(footer_settings, "german_address");
+  const linkdinUrl = getMetaValueByMetaName(settings, "linkedin_url");
+  const youtubeUrl = getMetaValueByMetaName(settings, "youtube_url");
+  const fbUrl = getMetaValueByMetaName(settings, "facebook_url");
+  const logo = getMediaLinkByMetaName(settings, "site_logoimg_id");
 
   return (
     <>
@@ -32,36 +57,43 @@ const Footer = async() => {
         {/* Top */}
         <div className="max-w-screen-lg mx-auto py-10 text-gray-500 px-20">
           <div className="flex flex-col md:flex-row md:justify-between items-start gap-6">
-            <Image src={footerLogo} width={200} height={170} alt="footerlogo" />
-
+            <Image
+              src={BASE_URL + logo} // baseurl + /public/.jpg
+              width={200}
+              height={170}
+              alt="footerlogo"
+            />
             <div
               className="mt-5 leading-5 "
               dangerouslySetInnerHTML={{ __html: support }}
             />
 
-            {/* <div className="flex flex-col text-gray-500 leading-8">
-              <span>
-                Office 902, Mazyad Mall, Office Tower-2, <br /> MBZ City, Abu
-                Dhabi
-              </span>
-              <span>United Arab Emirates</span>
-            </div> */}
+            <div className="flex flex-col gap-2">
+              <div
+                className="mt-5 leading-5 "
+                dangerouslySetInnerHTML={{ __html: contact }}
+              />
 
-
-            <div className="flex flex-col gap-2  ">
-            <div
-              className="mt-5 leading-5 "
-              dangerouslySetInnerHTML={{ __html: contact }}
-            />
-
-              {/* <span>Phone: +971 2 5545122</span>
-              <span>Fax: +971 2 5545133</span>
-              <span>E-mail: info@inteltec.ae</span> */}
-              <Link href={"#"} className="mt-5">
-                <Image src={linkedin}
-                 width={80} height={80}
-                alt="linkdin" />
-              </Link>
+              <div className="flex gap-3 mt-5">
+                <Link href={linkdinUrl || "#"}>
+                  <FontAwesomeIcon
+                    icon={faLinkedin}
+                    className="text-xl text-[#0077B5]"
+                  />
+                </Link>
+                <Link href={fbUrl || "#"}>
+                  <FontAwesomeIcon
+                    icon={faFacebook}
+                    className="text-xl text-[#1877F2]"
+                  />
+                </Link>
+                <Link href={youtubeUrl || "#"}>
+                  <FontAwesomeIcon
+                    icon={faYoutube}
+                    className="text-xl text-[#FF0000]"
+                  />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -69,34 +101,33 @@ const Footer = async() => {
         {/* Middle */}
         <div className=" bg-[#B0B0B0] py-2 md:py-5 mt-5">
           <div className="container mx-auto justify-center flex">
-          <div
+            <div
               className=" leading-5 "
               dangerouslySetInnerHTML={{ __html: copyright }}
             />
-
-            {/* <p className="text-sm text-center">
-              Copyright © 2022 by Inteltec Emirates - Subsidiary of Inteltec
-              Emirates Group. All rights reserved. Designed by{" "}
-              <Link href={"#"} className="underline">
-                Marketing Premiere
-              </Link>
-            </p> */}
           </div>
         </div>
+
         {/* Bottom */}
         <div className="bg-[#242323]">
-      <div className="max-w-screen-lg mx-auto flex items-center justify-between flex-wrap py-3">
-        <h1 className="text-white text-sm">Inteltec Emirates Group</h1>
-        {/* Image components with updated API */}
-        <Image src={inteltec} width={100} height={100} alt="inteltec" />
-        <Image src={ipay} width={50} height={50} alt="ipay" />
-        <Image src={vodatel} width={100} height={100} alt="vodatel" />
-        <Image src={iparama} width={60} height={60} alt="iparama" />
-        <Image src={gul} width={100} height={100} alt="gul" />
-        <Image src={ftc} width={60} height={60} alt="ftc" />
-      </div>
-    </div>
+          <div className="max-w-screen-lg mx-auto flex items-center flex-wrap py-3">
+            <h1 className="text-white text-sm mr-6">Inteltec Emirates Group</h1>
 
+            {sisters?.map(
+              (sister, i) =>
+                sister.featured_image && (
+                  <Image
+                    key={sister.name}
+                    src={sister.featured_image} // Ensure this is a valid URL
+                    alt={sister.name || "Sister Company"}
+                    width={100}
+                    height={100}
+                    className="object-contain"
+                  />
+                )
+            )}
+          </div>
+        </div>
       </footer>
     </>
   );
