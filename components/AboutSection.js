@@ -54,7 +54,7 @@ const About = ({ description }) => {
         </h1>
         <div className="md:w-1/2 pr-28">
           <div
-            className="text-sm leading-8 tracking-wide text-[#BFC0C0]"
+            className="text-md leading-8 tracking-wide text-[#BFC0C0]"
             dangerouslySetInnerHTML={{ __html: description }}
           />
         </div>

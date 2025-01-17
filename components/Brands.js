@@ -1,15 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import { fetchClient } from "@/helpers/fetchClient";
-
 // === images ===
 import logo1 from "../public/image/brands/Inteltec Emirates Group S.webp";
-import logo2 from "../public/image/brands/iPay.webp";
-import logo3 from "../public/image/brands/Vodatel.webp";
-import logo4 from "../public/image/brands/ftc.webp";
-import logo5 from "../public/image/brands/thumbnail_image001.webp";
-import logo6 from "../public/image/brands/Inteltec Emirates New.webp";
-import logo7 from "../public/image/brands/GULFTEC.webp";
+
 import AboutSection from "./AboutSection";
 
 const Brands = async () => {
@@ -31,18 +25,34 @@ const Brands = async () => {
     );
   }
 
+  let sisters;
+  try {
+    const url = `/posts?per_page=6&term_type=sister_concerns`;
+    const responseData = await fetchClient(url, {
+      next: {
+        revalidate: 30,
+      },
+    });
+
+    sisters = responseData?.data;
+  } catch (err) {
+    console.log("faild to fetch sister data");
+  }
+
   return (
     <>
       <section className=" bg-white">
-        <div className="flex">
+        <div className="flex h-60">
           {/* Left side */}
-          <div className="w-[37%] flex justify-end bg-[#DBDBDB] items-center pr-8">
+          <div className="w-[37%] h-full flex justify-end bg-[#DBDBDB] items-center pr-8">
             <h1 className="font-serif text-xl text-center text-[#444958] tracking-wide">
               Subsidiary of
             </h1>
           </div>
           {/* Right side */}
+
           <div className="flex divide-x-2 divide-slate-400 py-10">
+            {/* mts logo */}
             <div className="pr-6 pl-2">
               <Image
                 src={logo1}
@@ -52,49 +62,22 @@ const Brands = async () => {
                 className="mx-auto"
               />
             </div>
+
+            {/* sisters concerns */}
             <div className="pl-10 grid grid-cols-3">
-              <Image
-                src={logo2}
-                alt="icon"
-                width={60}
-                height={40}
-                className=""
-              />
-              <Image
-                src={logo3}
-                alt="icon"
-                width={100}
-                height={40}
-                className=""
-              />
-              <Image
-                src={logo4}
-                alt="icon"
-                width={100}
-                height={40}
-                className=""
-              />
-              <Image
-                src={logo5}
-                alt="icon"
-                width={70}
-                height={40}
-                className=""
-              />
-              <Image
-                src={logo6}
-                alt="icon"
-                width={100}
-                height={40}
-                className=""
-              />
-              <Image
-                src={logo7}
-                alt="icon"
-                width={150}
-                height={100}
-                className="mt-2"
-              />
+              {sisters?.map(
+                (sister, i) =>
+                  sister.featured_image && (
+                    <Image
+                      key={sister.name}
+                      src={sister.featured_image} // Ensure this is a valid URL
+                      alt={sister.name || "Sister Company"}
+                      width={60}
+                      height={40}
+                      className=""
+                    />
+                  )
+              )}
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { Barlow, Questrial } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import Head from "next/head";
 
 const barlow = Barlow({
   subsets: ["latin"],
@@ -20,6 +21,9 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Head>
+        <link rel="stylesheet" href="/bower_components/aos/dist/aos.css" />
+      </Head>
       <body className={barlow.className}>
         <>
           {children}

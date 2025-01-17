@@ -7,7 +7,7 @@ const Projects = async () => {
   let projects;
 
   try {
-    const url = `/posts?per_page=6&term_type=product`;
+    const url = `/posts?per_page=6&term_type=project`;
     const responseData = await fetchClient(url, {
       next: {
         revalidate: 30,

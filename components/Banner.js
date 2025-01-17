@@ -36,9 +36,11 @@ const Banner = () => {
       <div className="container mx-auto">
         {/* ==== banner content ==== */}
         <div className="mt-16 md:mt-20">
-          <h1 className="text-4xl md:text-7xl text-white font-semibold">
-            {mainSpeach}
-          </h1>
+          <h1
+            className="text-4xl md:text-7xl text-white font-semibold"
+            dangerouslySetInnerHTML={{ __html: mainSpeach }}
+          ></h1>
+
           <div className="mt-10 flex gap-5">
             <button
               onClick={() => handleScrollToSection("about_inteltec")}
