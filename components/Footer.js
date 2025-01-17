@@ -8,14 +8,16 @@ import {
 } from "@/helpers/metaHelpers";
 import { getNavData } from "@/helpers/getNavbarData";
 import { BASE_URL } from "@/helpers/baseUrl";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faLinkedin,
-  faFacebook,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faLinkedin,
+//   faFacebook,
+//   faTwitter,
+// } from "@fortawesome/free-brands-svg-icons";
+import { Facebook, Linkedin, Youtube } from "lucide-react";
 
 const Footer = async () => {
+  const { settings } = await getNavData();
   let sisters;
   try {
     const url = `/posts?per_page=6&term_type=sister_concerns`;
@@ -29,8 +31,6 @@ const Footer = async () => {
   } catch (err) {
     console.log("failed to fetch sister data");
   }
-
-  const { settings } = await getNavData();
 
   const footer_settings = await fetchClient(
     `/frontend/settings?meta_group=Footer Section`,
@@ -75,24 +75,21 @@ const Footer = async () => {
               />
 
               <div className="flex gap-3 mt-5">
-                <Link href={linkdinUrl || "#"}>
-                  <FontAwesomeIcon
-                    icon={faLinkedin}
-                    className="text-xl text-[#0077B5]"
-                  />
-                </Link>
-                <Link href={fbUrl || "#"}>
-                  <FontAwesomeIcon
-                    icon={faFacebook}
-                    className="text-xl text-[#1877F2]"
-                  />
-                </Link>
-                <Link href={youtubeUrl || "#"}>
-                  <FontAwesomeIcon
-                    icon={faYoutube}
-                    className="text-xl text-[#FF0000]"
-                  />
-                </Link>
+                <div>
+                  <Link href={linkdinUrl || "#"}>
+                    <Linkedin className="text-blue-600 text-2xl hover:text-blue-800" />
+                  </Link>
+                </div>
+                <div>
+                  <Link href={fbUrl || "#"}>
+                    <Facebook className="text-blue-600 text-2xl hover:text-blue-800" />
+                  </Link>
+                </div>
+                <div>
+                  <Link href={youtubeUrl || "#"}>
+                    <Youtube className="text-red-600 text-2xl hover:text-red-800" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -111,7 +108,9 @@ const Footer = async () => {
         {/* Bottom */}
         <div className="bg-[#242323]">
           <div className="max-w-screen-lg mx-auto flex items-center flex-wrap py-3">
-            <h1 className="text-white text-sm mr-6">Inteltec Emirates Group</h1>
+            <h1 className="text-white text-sm mr-10">
+              Mobile Tele Solutions Sisters
+            </h1>
 
             {sisters?.map(
               (sister, i) =>
