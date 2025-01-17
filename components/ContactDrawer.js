@@ -55,7 +55,7 @@ export function ContactDrawer() {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className=" text-white hover:text-gray-300 transition-colors"
+        className=" text-white text-lg hover:text-hoverBgColor duration-200 ease-in-ou"
       >
         Contact
       </button>

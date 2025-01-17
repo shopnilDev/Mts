@@ -2,7 +2,6 @@
 
 import axiosInstance from "@/helpers/axiosInstance";
 import { getMetaValueByMetaName } from "@/helpers/metaHelpers";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const Banner = () => {
@@ -22,39 +21,37 @@ const Banner = () => {
     fetchSettings();
   }, []);
 
-  // const mainSpeach = getMetaValueByMetaName(settings, "main_speech");
-  // console.log(mainSpeach);
+  const mainSpeach = getMetaValueByMetaName(settings, "main_speech");
+
+  // Smooth scroll to section
+  const handleScrollToSection = (sectionId) => {
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <>
-      <div className="container mx-auto ">
-        {/* ==== banner content ====  */}
-
-        {/* <div
-          className="text-gray-400"
-          dangerouslySetInnerHTML={{ __html: mainSpeach }}
-        /> */}
-
+      <div className="container mx-auto">
+        {/* ==== banner content ==== */}
         <div className="mt-16 md:mt-20">
           <h1 className="text-4xl md:text-7xl text-white font-semibold">
-            Telco Networks...
-          </h1>
-          <h1 className="text-4xl md:text-7xl text-white font-semibold">
-            Redefined
+            {mainSpeach}
           </h1>
           <div className="mt-10 flex gap-5">
             <button
-              className="border hover:border-[#0074BC] py-4 px-12 text-sm font-light rounded-sm
-            text-white uppercase hover:bg-buttonBgColor duration-500 ease-in-out mt-5"
+              onClick={() => handleScrollToSection("about_inteltec")}
+              className="border hover:border-[#0074BC] py-4 px-12 text-sm font-light rounded-sm text-white uppercase hover:bg-buttonBgColor duration-500 ease-in-out mt-5"
             >
-              learn more
+              Learn More
             </button>
-            <Link
-              href="#services"
-              className="border border-[#0074BC] py-4 px-12 text-sm font-light rounded-sm
-           text-white uppercase bg-buttonBgColor duration-500 ease-in-out mt-5"
+            <button
+              onClick={() => handleScrollToSection("services")}
+              className="border border-[#0074BC] py-4 px-12 text-sm font-light rounded-sm text-white uppercase bg-buttonBgColor duration-500 ease-in-out mt-5"
             >
-              services
-            </Link>
+              Services
+            </button>
           </div>
         </div>
       </div>

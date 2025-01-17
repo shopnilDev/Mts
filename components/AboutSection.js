@@ -44,7 +44,7 @@ const About = ({ description }) => {
 
   return (
     <section
-      id="about-inteltec"
+      id="about_inteltec"
       className="about_inteltec flex items-center px-10 relative min-h-screen "
       style={parallaxStyle}
     >

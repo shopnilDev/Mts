@@ -12,35 +12,57 @@ import logo7 from "../public/image/partners/logo7.webp";
 import logo8 from "../public/image/partners/logo8.webp";
 import logo9 from "../public/image/partners/logo9.webp";
 import logo10 from "../public/image/partners/logo10.webp";
+import { fetchClient } from "@/helpers/fetchClient";
 
-const Partners = () => {
-  // Array of logos
-  const logos = [
-    logo1,
-    logo2,
-    logo3,
-    logo4,
-    logo5,
-    logo6,
-    logo7,
-    logo8,
-    logo9,
-    logo10,
-  ];
+const Partners = async () => {
+  // const logos = [
+  //   logo1,
+  //   logo2,
+  //   logo3,
+  //   logo4,
+  //   logo5,
+  //   logo6,
+  //   logo7,
+  //   logo8,
+  //   logo9,
+  //   logo10,
+  // ];
+
+  let partners;
+
+  try {
+    const url = `/posts?per_page=6&term_type=partners`;
+    const responseData = await fetchClient(url, {
+      next: {
+        revalidate: 30,
+      },
+    });
+
+    partners = responseData?.data;
+  } catch (err) {
+    return (
+      <section className="bg-sectionBgColor py-14">
+        <div className="container mx-auto text-center">
+          <h1 className="text-5xl text-gray-300 mb-8 font-medium">Partners</h1>
+          <p className="text-red-500 text-lg">Failed To load Partners!</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <section id="partners" className="bg-white py-14 ">
+    <section id="partners" className="bg-white py-20 ">
       <div className="container mx-auto">
         <h2 className="text-5xl text-gray-600 mb-8 font-medium">Partners</h2>
         <div className="grid grid-cols-5 border border-gray-400">
-          {logos.map((logo, index) => (
+          {partners.map((partner, index) => (
             <div
               key={index}
               className="p-14 flex justify-center items-center border border-gray-400"
             >
               <Image
-                src={logo}
-                alt={`partner-logo-${index + 1}`}
+                src={partner?.featured_image}
+                alt={`Image of project: ${partner?.name}`}
                 width={120}
                 height={60}
                 className="object-contain max-h-12 w-auto"
