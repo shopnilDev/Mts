@@ -1,12 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import { fetchClient } from "@/helpers/fetchClient";
-// === images ===
-import logo1 from "../public/image/brands/Inteltec Emirates Group S.webp";
-
 import AboutSection from "./AboutSection";
 import { getNavData } from "@/helpers/getNavbarData";
 import { getMediaLinkByMetaName } from "@/helpers/metaHelpers";
+import { BASE_URL } from "@/helpers/baseUrl";
 
 const Brands = async () => {
   const { settings } = await getNavData();
@@ -63,7 +61,7 @@ const Brands = async () => {
             {/* mts logo */}
             <div className="pr-6 pl-2 ">
               <Image
-                src={BrnadsLogo}
+                src={BASE_URL + BrnadsLogo}
                 alt="icon"
                 width={238}
                 height={124}

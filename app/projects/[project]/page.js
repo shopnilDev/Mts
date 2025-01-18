@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getNavData } from "@/helpers/getNavbarData";
 import { fetchClient } from "@/helpers/fetchClient";
 import DOMPurify from "@/helpers/domPurify";
-import AOSWrapper from "@/components/AosWrapper";
+import AOSWrapper from "@/components/AOSWrapper";
 
 const Page = async ({ params }) => {
   const { menuItems, settings } = await getNavData();
@@ -66,18 +66,36 @@ const Page = async ({ params }) => {
 
             {/* Nex navigation */}
             <div className="mt-24">
-              <Link
-                href={`/projects/${prev_url}`}
-                className="border p-2 text-center px-10 font-light capitalize border-r-0"
-              >
-                Previous Project
-              </Link>
-              <Link
-                href={`/projects/${next_url}`}
-                className="border p-2 text-center px-10 font-light capitalize border-r"
-              >
-                Next project
-              </Link>
+              {prev_url ? (
+                  <Link
+                    href={`/projects/${prev_url}`}
+                    className="border p-2 text-center px-10 font-light capitalize border-r-0"
+                  >
+                    Previous Project
+                  </Link>
+                ) : (
+                  <button
+                    disabled
+                    className="border p-2 text-center px-10 font-light capitalize border-r-0 text-gray-400 cursor-not-allowed"
+                  >
+                    Previous Project
+                  </button>
+                )}
+              {next_url ? (
+                  <Link
+                    href={`/projects/${next_url}`}
+                    className="border p-2 text-center px-10 font-light capitalize border-r"
+                  >
+                    Next Project
+                  </Link>
+                ) : (
+                  <button
+                    disabled
+                    className="border p-2 text-center px-10 font-light capitalize border-r text-gray-400 cursor-not-allowed"
+                  >
+                    Next Project
+                  </button>
+                )}
             </div>
           </div>
 
