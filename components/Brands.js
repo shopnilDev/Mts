@@ -62,13 +62,13 @@ const Brands = async () => {
           <div className="flex divide-x-2 divide-slate-400 py-10">
             {/* mts logo */}
             <div className="pr-6 pl-2 ">
-              {/* <Image
+              <Image
                 src={BrnadsLogo}
                 alt="icon"
                 width={238}
                 height={124}
                 className="mx-auto"
-              /> */}
+              />
             </div>
 
             {/* sisters concerns */}
