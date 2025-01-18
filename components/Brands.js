@@ -5,8 +5,16 @@ import { fetchClient } from "@/helpers/fetchClient";
 import logo1 from "../public/image/brands/Inteltec Emirates Group S.webp";
 
 import AboutSection from "./AboutSection";
+import { getNavData } from "@/helpers/getNavbarData";
+import { getMediaLinkByMetaName } from "@/helpers/metaHelpers";
 
 const Brands = async () => {
+  const { settings } = await getNavData();
+  const BrnadsLogo = getMediaLinkByMetaName(
+    settings,
+    "site_logo_for_sister_concerns"
+  );
+
   let data;
   try {
     const responseData = await fetchClient(`/post?slug=about`, {
@@ -53,18 +61,18 @@ const Brands = async () => {
 
           <div className="flex divide-x-2 divide-slate-400 py-10">
             {/* mts logo */}
-            <div className="pr-6 pl-2">
+            <div className="pr-6 pl-2 ">
               <Image
-                src={logo1}
+                src={BrnadsLogo}
                 alt="icon"
-                width={250}
-                height={250}
+                width={238}
+                height={124}
                 className="mx-auto"
               />
             </div>
 
             {/* sisters concerns */}
-            <div className="pl-10 grid grid-cols-3">
+            <div className="pl-10 grid grid-cols-2  overflow-hidden">
               {sisters?.map(
                 (sister, i) =>
                   sister.featured_image && (
@@ -72,9 +80,9 @@ const Brands = async () => {
                       key={sister.name}
                       src={sister.featured_image} // Ensure this is a valid URL
                       alt={sister.name || "Sister Company"}
-                      width={60}
-                      height={40}
-                      className=""
+                      width={238}
+                      height={124}
+                      className="mx-auto"
                     />
                   )
               )}
