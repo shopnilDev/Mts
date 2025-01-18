@@ -106,7 +106,7 @@ const Footer = async () => {
         </div>
 
         {/* Bottom */}
-        <div className="bg-[#242323]">
+        {/* <div className="bg-[#242323]">
           <div className="max-w-screen-lg mx-auto flex items-center flex-wrap py-3">
             <h1 className="text-white text-sm mr-10">
               Mobile Tele Solutions Sisters
@@ -126,7 +126,7 @@ const Footer = async () => {
                 )
             )}
           </div>
-        </div>
+        </div> */}
       </footer>
     </>
   );
